@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeShellExecution": [
+      {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .cursor/hooks/block-global-git-config.ps1",
+        "matcher": "git config --global",
+        "failClosed": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+#!/bin/sh
+# Only the repository owner's Git identity is allowed.
+
+ALLOWED_NAME="i10u"
+ALLOWED_EMAIL="9254361+i10u@users.noreply.github.com"
+
+check_identity() {
+	name="$1"
+	email="$2"
+	label="$3"
+
+	if [ "$name" != "$ALLOWED_NAME" ] || [ "$email" != "$ALLOWED_EMAIL" ]; then
+		echo "pre-commit: $label must be $ALLOWED_NAME <$ALLOWED_EMAIL>." >&2
+		echo "pre-commit: got '$name' <$email>" >&2
+		return 1
+	fi
+
+	return 0
+}
+
+user_name=$(git config --local user.name 2>/dev/null || git config user.name)
+user_email=$(git config --local user.email 2>/dev/null || git config user.email)
+
+if ! check_identity "$user_name" "$user_email" "Configured identity"; then
+	echo "pre-commit: Set local identity with:" >&2
+	echo "  git config --local user.name \"$ALLOWED_NAME\"" >&2
+	echo "  git config --local user.email \"$ALLOWED_EMAIL\"" >&2
+	exit 1
+fi
+
+if [ -n "$GIT_AUTHOR_NAME" ] || [ -n "$GIT_AUTHOR_EMAIL" ]; then
+	if ! check_identity "$GIT_AUTHOR_NAME" "$GIT_AUTHOR_EMAIL" "GIT_AUTHOR"; then
+		exit 1
+	fi
+fi
+
+if [ -n "$GIT_COMMITTER_NAME" ] || [ -n "$GIT_COMMITTER_EMAIL" ]; then
+	if ! check_identity "$GIT_COMMITTER_NAME" "$GIT_COMMITTER_EMAIL" "GIT_COMMITTER"; then
+		exit 1
+	fi
+fi
+
+exit 0

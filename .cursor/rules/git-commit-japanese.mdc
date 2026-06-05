@@ -1,0 +1,13 @@
+---
+description: Gitコミットメッセージを日本語で統一する
+alwaysApply: true
+---
+
+# Gitコミットメッセージ言語ルール
+
+- このリポジトリで作成するコミットメッセージは、常に日本語で記述する。
+- 1行目（件名）も本文も日本語にする。
+- 英語のみのコミットメッセージは作らない。
+- 例:
+  - OK: `動画再生中のUI応答性を改善`
+  - NG: `Improve UI responsiveness during playback`

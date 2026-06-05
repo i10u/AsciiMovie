@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AsciiMovie Web デモ</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #111;
+      color: #eee;
+    }
+    header {
+      padding: 12px 16px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      background: #222;
+    }
+    #player-container {
+      width: 100%;
+      height: calc(100vh - 120px);
+      min-height: 400px;
+      background: #000;
+    }
+    footer {
+      padding: 8px 16px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    input[type="range"] { flex: 1; }
+    button { padding: 6px 12px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>AsciiMovie</strong>
+    <input type="file" id="file-input" accept=".amov">
+    <button id="play-btn" disabled>再生</button>
+    <button id="pause-btn" disabled>一時停止</button>
+    <button id="stop-btn" disabled>停止</button>
+  </header>
+  <div id="player-container"></div>
+  <footer>
+    <input type="range" id="seek" min="0" max="1000" value="0" step="1" disabled>
+    <span id="time">0:00 / 0:00</span>
+  </footer>
+  <script type="module" src="./demo.js"></script>
+</body>
+</html>

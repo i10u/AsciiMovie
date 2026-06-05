@@ -1,0 +1,30 @@
+---
+description: このリポジトリの Git 操作は i10u のみ許可
+alwaysApply: true
+---
+
+# Git ユーザー ID ルール（AsciiMovie）
+
+このリポジトリの Git Author / Committer は **常に `i10u` のみ** とする。
+
+## 必須の Git ユーザー
+
+- `user.name`: `i10u`
+- `user.email`: `9254361+i10u@users.noreply.github.com`
+
+## エージェントが守ること
+
+- コミット・amend・rebase など Git 操作の前に、ローカル設定を確認する:
+  - `git config --local user.name`
+  - `git config --local user.email`
+- 上記が `i10u` でない場合は、先にローカル設定を直してからコミットする。
+- **`git config --global` はこのリポジトリでは実行しない**。
+- コミット時は必要なら明示指定する:
+  - `git -c user.name=i10u -c user.email=9254361+i10u@users.noreply.github.com commit ...`
+- 履歴書き換えや force push でも、最終的な Author / Committer は必ず `i10u` にする。
+
+## 禁止
+
+- `i10u` 以外の名義での commit / push
+- このリポジトリで `user.name` / `user.email` を `i10u` 以外に設定すること
+- グローバル Git 設定を理由に別アカウントでコミットすること

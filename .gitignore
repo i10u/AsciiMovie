@@ -1,0 +1,52 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# .NET
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.nupkg
+
+# Node / web-plugin
+node_modules/
+web-plugin/dist/
+web-plugin/demo/dist/
+*.tsbuildinfo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp audio files (WPF player)
+*.amov.tmp.*
+
+# Generated samples
+sample.am
+sample.amov
+
+# Local media (input MP4 / converted .amov)
+Movie/
+
+# Cursor session exports
+cursor/
+
+# Local git metadata backups
+.git.backup.*/
+
+# Local-only scripts (not for publication)
+scripts/prepare-fresh-push.ps1

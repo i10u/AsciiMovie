@@ -1,0 +1,22 @@
+{
+  "name": "asciimovie-web-plugin",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "npm run build:lib && npm run build:demo",
+    "build:lib": "esbuild src/index.ts --bundle --format=esm --outfile=dist/index.js --platform=browser && tsc --emitDeclarationOnly --declaration --outDir dist",
+    "build:demo": "esbuild demo/demo.ts --bundle --format=esm --outfile=demo/demo.js --platform=browser",
+    "dev": "esbuild demo/demo.ts --bundle --format=esm --outfile=demo/demo.js --platform=browser --servedir=demo --serve=5173"
+  },
+  "devDependencies": {
+    "@types/pako": "^2.0.4",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.0"
+  },
+  "optionalDependencies": {
+    "pako": "^2.1.0"
+  }
+}
